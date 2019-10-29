@@ -54,6 +54,7 @@ public class SalesforceSourceConnector extends SourceConnector {
         client.setApiVersion(this.config.version());
 
         SObjectMetadata sObjectMetadata = client.getSObjectMetadata(this.config.salesForceObject());
+
         //2013-05-06T00:00:00+00:00
         Preconditions.checkNotNull(sObjectMetadata, "Could not find metadata for '%s'", this.config.salesForceObject());
 
@@ -93,9 +94,9 @@ public class SalesforceSourceConnector extends SourceConnector {
     }
 
     private PushTopic getOrCreatePushTopic(SalesforceRestClient client, SObjectDescriptor sObjectDescriptor) {
-        // TODO : I do not like this implementation
 
-        // TODO : Extract in a PushTopicHelper
+        // TODO : Extract in a PushTopicHelper and change the internal behaviour
+        // TODO Add listeners and callbacks around SF Pushtipics ==>> proper logging
 
         PushTopic pushTopic = client.getPushTopic(this.config.salesForcePushTopicName());
 
