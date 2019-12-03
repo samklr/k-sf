@@ -7,12 +7,12 @@
         <maven>3.0.4</maven>
     </prerequisites>
 
-    <groupId>com.jobteaser.kafka.connect</groupId>
+    <groupId>com.sk.kafka.connect</groupId>
     <artifactId>kafka-connect-salesforce</artifactId>
-    <version>0.0.9-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <inceptionYear>2018</inceptionYear>
-    <name>kafka-connect-salesforce</name>
+    <inceptionYear>2019</inceptionYear>
+    <name>connect-salesforce</name>
 
 
     <licenses>
@@ -26,9 +26,9 @@
 
     <properties>
         <confluent.version>3.0.0</confluent.version>
-        <kafka.version>2.1.0</kafka.version>
+        <kafka.version>2.0.0</kafka.version>
         <junit.version>4.12</junit.version>
-        <guava.version>18.0</guava.version>
+        <guava.version>27.1-jre</guava.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -94,6 +94,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
                 <configuration>
                     <archive>
                         <manifest>

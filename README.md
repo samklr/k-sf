@@ -44,7 +44,7 @@ The following table contains the configuration parameters for the connector.
 ## Example Configuration
 
 ```
-name=jt-sf-connector-test
+name=sf-connector-test
 connector.class=SalesforceSourceConnector
 tasks.max=1
 kafka.topic=test

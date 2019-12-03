@@ -96,7 +96,7 @@ public class SalesforceSourceConnector extends SourceConnector {
     private PushTopic getOrCreatePushTopic(SalesforceRestClient client, SObjectDescriptor sObjectDescriptor) {
 
         // TODO : Extract in a PushTopicHelper and change the internal behaviour
-        // TODO Add listeners and callbacks around SF Pushtipics ==>> proper logging
+        // TODO Add listeners and callbacks around SF Pushtopics ==>> proper logging
 
         PushTopic pushTopic = client.getPushTopic(this.config.salesForcePushTopicName());
 

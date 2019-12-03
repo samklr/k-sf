@@ -82,8 +82,9 @@ public class SalesforceSourceTask extends SourceTask implements ClientSessionCha
         this.metadata = salesforceRestClient.getSObjectMetadata(this.config.salesForceObject());
         Preconditions.checkNotNull(this.metadata, "Could not find metadata for '%s'", this.config.salesForceObject());
 
-        log.info("Looking for SOObjectDescriptor for {}", this.config.salesForceObject());
+        log.debug("Looking for SOObjectDescriptor for {}", this.config.salesForceObject());
         this.descriptor = salesforceRestClient.getSObjectDescriptor(this.metadata);
+
         //2013-05-06T00:00:00+00:00
         Preconditions.checkNotNull(this.descriptor, "Could not find descriptor for '%s'", this.config.salesForceObject());
 
@@ -92,14 +93,14 @@ public class SalesforceSourceTask extends SourceTask implements ClientSessionCha
 
         this.streamingUrl = new GenericUrl(this.authenticationResponse.instance_url());
         this.streamingUrl.setRawPath(String.format("/cometd/%s", this.config.version()));
-        log.info("Streaming url configured to {}", this.streamingUrl);
+        log.debug("Streaming url configured to {}", this.streamingUrl);
 
         this.channel = String.format("/topic/%s", this.config.salesForcePushTopicName());
 
         this.sourcePartition.put("pushtopic", this.config.salesForcePushTopicName());
 
         Long offset = loadOffset();
-        log.info("Starting from offset : " + offset);
+        log.debug("Starting from offset : " + offset);
 
         this.streamingClient = BayeuxHelper.createClient(this.streamingUrl,
                                                          this.config.connectTimeout(),
