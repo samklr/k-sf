@@ -42,6 +42,7 @@ public class BayeuxHelper {
         try {
             httpClient.start();
         } catch (Exception e) {
+             log.error("Exception while launching http Client ");
             throw new ConnectException("Exception thrown while starting httpClient.", e);
         }
 
